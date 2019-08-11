@@ -1,0 +1,20 @@
+x=1:0.1:10;
+y=exp(x);
+err=11:0.1:18;
+z=11:0.1:18;
+tol=0.1;
+u0=1;
+while(true)
+t1=0;
+t2=0;
+xnn=11;
+for(i=1:90)
+    t1=t1+((y(i)/(xnn-x(i))^(u0+1))*(y(i)-sqrt(2/pi)));
+    t2=t2+(((y(i)/(xnn-x(i))^(u0+2))*(y(i)-sqrt(2/pi))))*(-u0-1);
+end
+u1=u0-(t1/t2);
+if(abs(u1-u0)<tol)
+    break;
+end
+u0=u1;
+end
